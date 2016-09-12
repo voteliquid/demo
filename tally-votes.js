@@ -48,7 +48,7 @@ for (let i = 0; i < voters.length; i++) {
 }
 // console.log('votes:\n', votes)
 
-// Create indexes for quick lookups
+// Create indices for quick lookups
 const votersByUid = _.keyBy(voters, 'uid')
 const votesByVoter = _.keyBy(votes, 'voter')
 
@@ -57,29 +57,45 @@ const votesByVoter = _.keyBy(votes, 'voter')
 // -------------------------
 
 // Given a voter and the record of all votes,
-// return that individual's voter position (recursive function)
-function resolveIndividualsPosition(voter, votesByVoter) {
-
+// return that individual's voter position (recursive)
+function resolveIndividualsPosition(voter, votesByVoter, cycleState) {
   // Did the voter explicitly vote?
   if (votesByVoter.hasOwnProperty(voter.uid)) {
     return votesByVoter[voter.uid].position
   }
 
+  // Protect against endless cycle of no-show votes
+  cycleState.hare = votersByUid[votersByUid[cycleState.hare.delegate].delegate]
+  if (!votesByVoter.hasOwnProperty(cycleState.hare.uid)) {
+    cycleState.tortoise = votersByUid[cycleState.tortoise.delegate]
+    if (cycleState.hare === cycleState.tortoise) {
+      return 'no-vote'
+    }
+  }
+
   // Otherwise inherit their delegate's position
   const delegate = votersByUid[voter.delegate]
-  return resolveIndividualsPosition(delegate, votesByVoter)
-
-  // TODO: protect against endless cycle of no-show votes
+  return resolveIndividualsPosition(delegate, votesByVoter, cycleState)
 }
 
 
 // Tally up the votes by iterating through each voter
 voters.forEach(voter => {
 
-  let position = resolveIndividualsPosition(voter, votesByVoter)
+  // Keep some state to implement Floyd's Cycle-Finding Algorithm
+  let cycleState = {
+    tortoise: voter,
+    hare: voter,
+  }
+
+  let position = resolveIndividualsPosition(voter, votesByVoter, cycleState)
   let isDelegated = !votesByVoter.hasOwnProperty(voter.uid)
 
-  console.log(`${voter.full_name} votes "${position}"${isDelegated ? ' (delegated)' : ''}`)
+  if (position === 'no-vote') {
+    console.log(`${voter.full_name} didn't vote because their delegate chain looped`)
+  } else {
+    console.log(`${voter.full_name} votes "${position}"${isDelegated ? ' (delegated)' : ''}`)
+  }
 
   if (position === 'for') {
     bill.LD_for++
@@ -89,7 +105,7 @@ voters.forEach(voter => {
     bill.LD_against++
   }
 
-  if (position === 'abstain') {
+  if (position === 'abstain' || position === 'no-vote') {
     bill.LD_abstain++
   }
 })
