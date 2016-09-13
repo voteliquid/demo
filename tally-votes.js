@@ -108,3 +108,13 @@ voters.forEach(voter => {
 })
 
 console.log('\nbill:', bill)
+
+// Calculate and print the effective final tallies
+const finalTally = {
+  yay: bill.votes_yay + bill.votes_yay_from_delegate,
+  nay: bill.votes_nay + bill.votes_nay_from_delegate,
+  voted: voters.length - bill.votes_no_vote, // is there a quorum?
+  potential_voters: voters.length,
+  delegated: bill.votes_yay_from_delegate + bill.votes_nay_from_delegate + bill.votes_blank_from_delegate,
+}
+console.log('\nfinalTally:', finalTally)
