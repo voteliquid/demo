@@ -25,11 +25,11 @@ let bill = {
   date_introduced: new Date('Mon Sep 12 2016 04:34:21 GMT-0700 (PDT)'),
   date_of_vote: new Date('Fri Sep 16 2016 17:00:00 GMT-0700 (PDT)'),
   votes_yay: 0,// these tally values all default to 0
-  votes_yay_delegated: 0,
+  votes_yay_from_delegate: 0,
   votes_nay: 0,
-  votes_nay_delegated: 0,
+  votes_nay_from_delegate: 0,
   votes_blank: 0,
-  votes_blank_delegated: 0,
+  votes_blank_from_delegate: 0,
   votes_no_vote: 0,
 }
 
@@ -98,22 +98,13 @@ voters.forEach(voter => {
   let position = resolveIndividualsPosition(voter, votesByVoterUid, cycleState)
   let isDelegated = !votesByVoterUid.hasOwnProperty(voter.uid)
 
-  if (position === 'no_vote') {
-    console.log(`${voter.full_name} didn't vote because their delegate chain looped`)
-    bill.votes_no_vote++
-    return
+  // increment tally counter for the appropriate key
+  let tallyKey = 'votes_' + position
+  if (position !== 'no_vote' && isDelegated) {
+    tallyKey += '_from_delegate'
   }
-
-  console.log(`${voter.full_name} votes "${position}"${isDelegated ? ' (delegated)' : ''}`)
-
-  if (position === 'yay') {
-    isDelegated ? bill.votes_yay++ : bill.votes_yay_delegated++
-  } else if (position === 'nay') {
-    isDelegated ? bill.votes_nay++ : bill.votes_nay_delegated++
-  } else if (position === 'blank') {
-    isDelegated ? bill.votes_blank++ : bill.votes_blank_delegated++
-  }
+  bill[tallyKey]++
+  console.log(voter.full_name, tallyKey)
 })
 
-console.log()
-console.log('bill:', bill)
+console.log('\nbill:', bill)
