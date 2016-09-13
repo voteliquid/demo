@@ -60,9 +60,12 @@ const votesByVoterUid = _.keyBy(votes, 'voter_uid')
 // Now the actual vote-tallying alorithm begins
 // -------------------------
 
+// declare cycleState so resolveIndividualsPosition has access
+let cycleState
+
 // Given a voter and the record of all votes,
 // return that individual's voter position (recursive)
-function resolveIndividualsPosition(voter, votesByVoterUid, cycleState) {
+function resolveIndividualsPosition(voter, votesByVoterUid) {
   // Did the voter explicitly vote?
   if (votesByVoterUid.hasOwnProperty(voter.uid)) {
     return votesByVoterUid[voter.uid].position
@@ -79,15 +82,15 @@ function resolveIndividualsPosition(voter, votesByVoterUid, cycleState) {
 
   // Otherwise inherit their delegate's position
   const delegate = votersByUid[voter.delegate]
-  return resolveIndividualsPosition(delegate, votesByVoterUid, cycleState)
+  return resolveIndividualsPosition(delegate, votesByVoterUid)
 }
 
 
 // Tally up the votes by iterating through each voter
 voters.forEach(voter => {
 
-  // Keep some state to implement Floyd's Cycle-Finding Algorithm
-  let cycleState = {
+  // reset cycleState to implement Floyd's Cycle-Finding Algorithm
+  cycleState = {
     tortoise: voter,
     hare: voter,
   }
