@@ -1,56 +1,22 @@
-svg {
-  background-color: #FFF;
-  cursor: default;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  -o-user-select: none;
-  user-select: none;
-}
 
-svg:not(.active):not(.ctrl) {
-  cursor: crosshair;
-}
-
-path.link {
+.link {
   fill: none;
-  stroke: #000;
-  stroke-width: 4px;
-  cursor: default;
-}
-
-svg:not(.active):not(.ctrl) path.link {
-  cursor: pointer;
-}
-
-path.link.selected {
-  stroke-dasharray: 10,2;
-}
-
-path.link.dragline {
-  pointer-events: none;
-}
-
-path.link.hidden {
-  stroke-width: 0;
-}
-
-circle.node {
+  stroke: #666;
   stroke-width: 1.5px;
-  cursor: pointer;
 }
 
-circle.node.reflexive {
-  stroke: #000 !important;
-  stroke-width: 2.5px;
+#licensing {
+  fill: green;
+}
+
+circle {
+  fill: #ccc;
+  stroke: #333;
+  stroke-width: 1.5px;
 }
 
 text {
-  font: 12px sans-serif;
+  font: 10px sans-serif;
   pointer-events: none;
-}
-
-text.id {
-  text-anchor: middle;
-  font-weight: bold;
+  text-shadow: 0 3px 0 #fff, 3px 0 0 #fff, 0 -3px 0 #fff, -3px 0 0 #fff;
 }
