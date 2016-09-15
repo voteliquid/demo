@@ -22,6 +22,10 @@ body {
   fill: white;
 }
 
+.vote.isDelegated {
+  opacity: .7;
+}
+
 circle {
   fill: #ccc;
   stroke: #333;
