@@ -7,7 +7,10 @@
     "lodash": "^4.15.0"
   },
   "devDependencies": {
-    "browserify": "^13.1.0"
+    "browserify": "^13.1.0",
+    "eslint": "^3.5.0",
+    "eslint-config-airbnb-base": "^7.1.0",
+    "eslint-plugin-import": "^1.15.0"
   },
   "scripts": {
     "build": "browserify -e app.js -o bundle.js",
