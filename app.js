@@ -1,34 +1,36 @@
 /* global d3 */
 
+var _ = require('lodash')
+
 var exampleVoters = require('./example-voters.js').map(function (voter) {
   return Object.assign({}, voter, {
     name: voter.uid,
   })
 })
 
-var uidToNameMap = exampleVoters.reduce(function (memo, voter) {
-  memo[voter.name] = voter.full_name
-  return memo
-}, {})
+var votersByUid = _.keyBy(exampleVoters, 'uid')
 
 var links = exampleVoters.map(function (voter) {
-  return { source: voter.name, target: voter.delegate, type: 'suit' }
+  return { source: voter.name, target: voter.delegate, type: 'delegation' } // can add other edge types
 })
 
 var nodes = {}
 var width = 500
-var height = 500
+var height = 400
 
 // Convert links to weird d3 nodes object
 links.forEach(function (link) {
   link.source = nodes[link.source] || (nodes[link.source] = {
-    name: link.source, full_name: uidToNameMap[link.source],
+    name: link.source,
+    full_name: votersByUid[link.source].full_name,
+    vote: votersByUid[link.source].vote,
   })
   link.target = nodes[link.target] || (nodes[link.target] = {
-    name: link.target, full_name: uidToNameMap[link.target],
+    name: link.target,
+    full_name: votersByUid[link.target].full_name,
+    vote: votersByUid[link.target].vote,
   })
 })
-
 
 var force = d3.layout.force()
     .nodes(d3.values(nodes))
@@ -45,7 +47,7 @@ var svg = d3.select('body').append('svg')
 
 // Per-type markers, as they don't inherit styles.
 svg.append('defs').selectAll('marker')
-    .data(['suit', 'licensing', 'resolved'])
+    .data(['delegation']) // can add other edge types
   .enter()
     .append('marker')
     .attr('id', function (d) { return d })
@@ -70,6 +72,7 @@ var circle = svg.append('g').selectAll('circle')
   .enter()
     .append('circle')
     .attr('r', 10)
+    .attr('class', function (d) { return 'vote ' + d.vote })
     .call(force.drag)
 
 var text = svg.append('g').selectAll('text')
@@ -82,18 +85,24 @@ var text = svg.append('g').selectAll('text')
 
 // Use elliptical arc path segments to doubly-encode directionality.
 function tick() {
-  path.attr('d', linkArc)  // eslint-disable-line no-use-before-define
-  circle.attr('transform', transform)  // eslint-disable-line no-use-before-define
-  text.attr('transform', transform)  // eslint-disable-line no-use-before-define
+  path.attr('d', function linkArc(d) {
+    var dx = d.target.x - d.source.x
+    var dy = d.target.y - d.source.y
+    var dr = Math.sqrt(dx * dx + dy * dy) // eslint-disable-line no-mixed-operators
+    return 'M' + d.source.x + ',' + d.source.y + 'A' + dr + ',' + dr + ' 0 0,1 ' + d.target.x + ',' + d.target.y
+  })
+  circle.attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')' })
+  text.attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')' })
 }
 
-function linkArc(d) {
-  var dx = d.target.x - d.source.x
-  var dy = d.target.y - d.source.y
-  var dr = Math.sqrt(dx * dx + dy * dy) // eslint-disable-line no-mixed-operators
-  return 'M' + d.source.x + ',' + d.source.y + 'A' + dr + ',' + dr + ' 0 0,1 ' + d.target.x + ',' + d.target.y
-}
+var generateRandomVotes = require('./generate-random-votes.js')
 
-function transform(d) {
-  return 'translate(' + d.x + ',' + d.y + ')'
+document.getElementById('simulate').onclick = function () {
+  var randomVotes = generateRandomVotes(exampleVoters)
+  randomVotes.forEach(function (vote) {
+    nodes[vote.voter_uid].vote = vote.position
+  })
+  // circle.each(function (node) {
+  //   node.attr('class', function (d) { return 'vote ' + nodes[d.name].vote })
+  // })
 }

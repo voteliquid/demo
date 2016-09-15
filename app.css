@@ -10,8 +10,16 @@ body {
   stroke-width: 1.5px;
 }
 
-#licensing {
+.vote.yay {
   fill: green;
+}
+
+.vote.nay {
+  fill: red;
+}
+
+.vote.blank {
+  fill: white;
 }
 
 circle {
