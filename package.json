@@ -11,6 +11,7 @@
   },
   "scripts": {
     "build": "browserify -e app.js -o bundle.js",
+    "start": "watchify -e app.js -o bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
