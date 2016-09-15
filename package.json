@@ -6,8 +6,11 @@
   "dependencies": {
     "lodash": "^4.15.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "browserify": "^13.1.0"
+  },
   "scripts": {
+    "build": "browserify -e app.js -o bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

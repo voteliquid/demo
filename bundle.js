@@ -1,3 +1,4 @@
+(function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var exampleVoters = require('./example-voters.js').map(function (voter) {
   return Object.assign({}, voter, {
     name: voter.uid,
@@ -85,3 +86,49 @@ function linkArc(d) {
 function transform(d) {
   return "translate(" + d.x + "," + d.y + ")";
 }
+
+},{"./example-voters.js":2}],2:[function(require,module,exports){
+module.exports = [
+  {
+    uid: 'a',
+    full_name: 'Angela Augustine',
+    delegate: 'c',
+  },
+  {
+    uid: 'b',
+    full_name: 'Ben Botticelli',
+    delegate: 'd',
+  },
+  {
+    uid: 'c',
+    full_name: 'Carl Campbell',
+    delegate: 'a',
+  },
+  {
+    uid: 'd',
+    full_name: 'Dalia Douglass',
+    delegate: 'b',
+  },
+  {
+    uid: 'e',
+    full_name: 'Eva Ernst',
+    delegate: 'a',
+  },
+  {
+    uid: 'f',
+    full_name: 'Franklin Fishburne',
+    delegate: 'a',
+  },
+  {
+    uid: 'g',
+    full_name: 'Grant Gordon',
+    delegate: 'a',
+  },
+  {
+    uid: 'h',
+    full_name: 'Heather Highgarden',
+    delegate: 'a',
+  },
+]
+
+},{}]},{},[1]);
