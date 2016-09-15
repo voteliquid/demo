@@ -48,7 +48,7 @@ var svg = d3.select('body').append('svg')
 
 // Per-type markers, as they don't inherit styles.
 svg.append('defs').selectAll('marker')
-    .data(['delegation']) // can add other edge types
+    .data(['delegation'])
   .enter()
     .append('marker')
     .attr('id', function (d) { return d })
@@ -84,7 +84,6 @@ var text = svg.append('g').selectAll('text')
     .attr('y', '.31em')
     .text(function (d) { return d.full_name })
 
-// Use elliptical arc path segments to doubly-encode directionality.
 function tick() {
   path.attr('d', function linkArc(d) {
     var dx = d.target.x - d.source.x
@@ -93,19 +92,19 @@ function tick() {
     return 'M' + d.source.x + ',' + d.source.y + 'A' + dr + ',' + dr + ' 0 0,1 ' + d.target.x + ',' + d.target.y
   })
   circle.attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')' })
+        .attr('class', function (d) { return 'vote ' + d.vote })
   text.attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')' })
 }
 
 var generateRandomVotes = require('./generate-random-votes.js')
 
 document.getElementById('simulate').onclick = function () {
-  var randomVotes = generateRandomVotes(exampleVoters)
-  randomVotes.forEach(function (vote) {
+  exampleVoters.forEach(function clearVotes(voter) {
+    nodes[voter.uid].vote = undefined
+  })
+  generateRandomVotes(exampleVoters).forEach(function (vote) {
     nodes[vote.voter_uid].vote = vote.position
   })
-  // circle.each(function (node) {
-  //   node.attr('class', function (d) { return 'vote ' + nodes[d.name].vote })
-  // })
 }
 
 },{"./example-voters.js":2,"./generate-random-votes.js":3,"lodash":4}],2:[function(require,module,exports){
@@ -114,7 +113,6 @@ module.exports = [
     uid: 'a',
     full_name: 'Angela Augustine',
     delegate: 'c',
-    vote: 'yay',
   },
   {
     uid: 'b',
@@ -130,7 +128,6 @@ module.exports = [
     uid: 'd',
     full_name: 'Dalia Douglass',
     delegate: 'b',
-    vote: 'yay',
   },
   {
     uid: 'e',
@@ -141,7 +138,6 @@ module.exports = [
     uid: 'f',
     full_name: 'Franklin Fishburne',
     delegate: 'a',
-    vote: 'nay',
   },
   {
     uid: 'g',
@@ -152,7 +148,6 @@ module.exports = [
     uid: 'h',
     full_name: 'Heather Highgarden',
     delegate: 'a',
-    vote: 'blank',
   },
   {
     uid: 'z',

@@ -3,7 +3,6 @@ module.exports = [
     uid: 'a',
     full_name: 'Angela Augustine',
     delegate: 'c',
-    vote: 'yay',
   },
   {
     uid: 'b',
@@ -19,7 +18,6 @@ module.exports = [
     uid: 'd',
     full_name: 'Dalia Douglass',
     delegate: 'b',
-    vote: 'yay',
   },
   {
     uid: 'e',
@@ -30,7 +28,6 @@ module.exports = [
     uid: 'f',
     full_name: 'Franklin Fishburne',
     delegate: 'a',
-    vote: 'nay',
   },
   {
     uid: 'g',
@@ -41,7 +38,6 @@ module.exports = [
     uid: 'h',
     full_name: 'Heather Highgarden',
     delegate: 'a',
-    vote: 'blank',
   },
   {
     uid: 'z',
