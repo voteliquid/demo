@@ -39,4 +39,9 @@ module.exports = [
     full_name: 'Heather Highgarden',
     delegate: 'a',
   },
+  {
+    uid: 'z',
+    full_name: 'Zain Zebra',
+    delegate: 'g',
+  },
 ]
