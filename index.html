@@ -2,12 +2,12 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Liquid Democracy Demo</title>
+    <title>Liquid Democracy Simulation</title>
     <link rel="stylesheet" href="app.css">
   </head>
 
   <body>
-    <h1>Liquid Democracy Demo</h1>
+    <h1>Liquid Democracy Simulation</h1>
     <button id="simulate">Simulate votes</button>
     <div id="vote-tally">
       <p class="yay-label">
@@ -16,6 +16,12 @@
       <p class="nay-label">
         <strong><span id="nay-count">0</span></strong> Nay
       </p>
+    </div>
+    <p id="instructions">
+      <strong>INSTRUCTIONS</strong><br>
+      Click a circle to adjust a vote.<br>
+      Colors indicate vote.<br>
+      Arrows indicate delegation.</p>
   </body>
 
   <script src="https://d3js.org/d3.v3.min.js"></script>
