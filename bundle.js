@@ -76,6 +76,7 @@ var circle = svg.append('g').selectAll('circle')
     .append('circle')
     .attr('r', 10)
     .attr('class', function (d) { return 'vote ' + d.vote })
+    .on('click', function (d) { clickVoter(d.name) })
     .call(force.drag)
 
 var text = svg.append('g').selectAll('text')
@@ -125,11 +126,8 @@ function resolveIndividualsPosition(voter, votesByVoterUid) {
   return resolveIndividualsPosition(delegate, votesByVoterUid)
 }
 
-document.getElementById('simulate').onclick = function () {
-  // clear existing votes
-  voters.forEach(function (voter) {
-    nodes[voter.uid].vote = undefined
-  })
+
+function tallyVotes(votesByVoterUid) {
   var bill = {
     uid: 'exampleItem',
     name: 'Example Item',
@@ -145,11 +143,6 @@ document.getElementById('simulate').onclick = function () {
     votes_blank_from_delegate: 0,
     votes_no_vote: 0,
   }
-
-  var votes = generateRandomVotes(voters)
-
-  // Create indices for quick lookups
-  var votesByVoterUid = _.keyBy(votes, 'voter_uid')
 
   // Tally up the votes by iterating through each voter
   voters.forEach(function (voter) {
@@ -168,13 +161,52 @@ document.getElementById('simulate').onclick = function () {
       tallyKey += '_from_delegate'
     }
     bill[tallyKey]++
-    console.log(voter.full_name, tallyKey)
+    // console.log(voter.full_name, tallyKey)
     nodes[voter.uid].vote = position
     nodes[voter.uid].isDelegated = isDelegated
   })
 
   document.getElementById('yay-count').innerText = bill.votes_yay + bill.votes_yay_from_delegate
   document.getElementById('nay-count').innerText = bill.votes_nay + bill.votes_nay_from_delegate
+}
+
+var votes
+var votesByVoterUid
+
+document.getElementById('simulate').onclick = function () {
+  // clear existing votes
+  voters.forEach(function (voter) {
+    nodes[voter.uid].vote = undefined
+  })
+
+  votes = generateRandomVotes(voters)
+  votesByVoterUid = _.keyBy(votes, 'voter_uid') // Create index for quick lookups
+
+  tallyVotes(votesByVoterUid)
+}
+
+function clickVoter(voterUid) {
+  var positions = ['yay', 'nay', 'blank', 'no_vote']
+
+  var newPosition
+
+  if (!votesByVoterUid[voterUid]) {
+    newPosition = 'yay'
+    votesByVoterUid[voterUid] = {
+      voter_uid: voterUid,
+    }
+  } else {
+    var oldPosition = votesByVoterUid[voterUid].position
+    newPosition = positions[positions.indexOf(oldPosition) + 1]
+  }
+
+  if (newPosition === 'no_vote') {
+    delete votesByVoterUid[voterUid]
+  } else {
+    votesByVoterUid[voterUid].position = newPosition
+  }
+
+  tallyVotes(votesByVoterUid)
 }
 
 },{"./example-voters.js":2,"./generate-random-votes.js":3,"lodash":4}],2:[function(require,module,exports){
