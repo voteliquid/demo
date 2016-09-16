@@ -1,5 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
-/* global d3 */
+/* global d3, ga */
 
 var _ = require('lodash')
 
@@ -212,6 +212,8 @@ document.getElementById('simulate').onclick = function () {
   votesByVoterUid = _.keyBy(votes, 'voter_uid') // Create index for quick lookups
 
   tallyVotes(votesByVoterUid)
+
+  ga('send', 'event', 'user action', 'simulate button', 'clicked simulate button')
 }
 
 function clickVoter(voterUid) {
@@ -236,6 +238,7 @@ function clickVoter(voterUid) {
   }
 
   tallyVotes(votesByVoterUid)
+  ga('send', 'event', 'user action', 'clicked voter', 'clicked voter node')
 }
 
 // Start simulated

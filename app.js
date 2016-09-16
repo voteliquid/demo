@@ -1,4 +1,4 @@
-/* global d3 */
+/* global d3, ga */
 
 var _ = require('lodash')
 
@@ -211,6 +211,8 @@ document.getElementById('simulate').onclick = function () {
   votesByVoterUid = _.keyBy(votes, 'voter_uid') // Create index for quick lookups
 
   tallyVotes(votesByVoterUid)
+
+  ga('send', 'event', 'user action', 'simulate button', 'clicked simulate button')
 }
 
 function clickVoter(voterUid) {
@@ -235,6 +237,7 @@ function clickVoter(voterUid) {
   }
 
   tallyVotes(votesByVoterUid)
+  ga('send', 'event', 'user action', 'clicked voter', 'clicked voter node')
 }
 
 // Start simulated
