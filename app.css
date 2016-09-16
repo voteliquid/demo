@@ -104,7 +104,18 @@ text {
   pointer-events: none;
 }
 
-text-bg {
-  background-color: white;
-  opacity: .1;
+footer {
+  position: absolute;
+  top: 498px;
+  left: 374px;
+  font-size: 12px;
+  color: #888;
+}
+
+footer a {
+  opacity: .5;
+}
+
+footer a:hover {
+  opacity: 1;
 }
