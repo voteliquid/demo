@@ -37,14 +37,14 @@ button#simulate:hover {
 
 #instructions {
   position: absolute;
-  top: 357px;
+  top: 371px;
   left: 8px;
   font-size: 0.75em;
   text-align: left;
 }
 
 #instructions strong {
-  font-size: 10px;
+  font-size: 11px;
 }
 
 .yay-label {
