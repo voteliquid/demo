@@ -15,7 +15,6 @@ var links = voters.map(function (voter) {
     source: voter.name,
     target: voter.delegate,
     type: 'delegation',
-    isDelegated: false,
   }
 })
 
