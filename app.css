@@ -13,6 +13,7 @@ button#simulate {
   color: #262626;
   cursor: pointer;
   border-radius: 3px;
+  outline: none;
 }
 
 button#simulate:hover {
