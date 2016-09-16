@@ -172,7 +172,6 @@ document.getElementById('simulate').onclick = function () {
     nodes[voter.uid].isDelegated = isDelegated
   })
 
-  document.getElementById('vote-tally').style.visibility = 'visible'
   document.getElementById('yay-count').innerText = bill.votes_yay + bill.votes_yay_from_delegate
   document.getElementById('nay-count').innerText = bill.votes_nay + bill.votes_nay_from_delegate
 }
