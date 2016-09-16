@@ -12,7 +12,12 @@ var voters = require('./example-voters.js').map(function (voter) {
 var votersByUid = _.keyBy(voters, 'uid')
 
 var links = voters.map(function (voter) {
-  return { source: voter.name, target: voter.delegate, type: 'delegation' }
+  return {
+    source: voter.name,
+    target: voter.delegate,
+    type: 'delegation',
+    isDelegated: false,
+  }
 })
 
 var nodes = {}
@@ -69,7 +74,7 @@ var path = svg.append('g').selectAll('path')
     .data(force.links())
   .enter()
     .append('path')
-    .attr('class', function (d) { return 'link ' + d.type })
+    .attr('class', 'link')
     .attr('marker-end', function (d) { return 'url(#' + d.type + ')' })
 
 // Vote nodes
@@ -167,11 +172,11 @@ function tallyVotes(votesByVoterUid) {
     }
 
     var position = resolveIndividualsPosition(voter, votesByVoterUid)
-    var isDelegated = !votesByVoterUid.hasOwnProperty(voter.uid)
+    var isDelegated = !votesByVoterUid.hasOwnProperty(voter.uid) && position !== 'no_vote'
 
     // Increment tally counter for the appropriate key
     var tallyKey = 'votes_' + position
-    if (position !== 'no_vote' && isDelegated) {
+    if (isDelegated) {
       tallyKey += '_from_delegate'
     }
     bill[tallyKey]++
@@ -182,13 +187,16 @@ function tallyVotes(votesByVoterUid) {
     nodes[voter.uid].isDelegated = isDelegated
   })
 
-
   circle
     .data(force.nodes())
     .attr('class', function (d) { return 'vote ' + d.vote + (d.isDelegated ? ' isDelegated' : '') })
 
   document.getElementById('yay-count').innerText = bill.votes_yay + bill.votes_yay_from_delegate
   document.getElementById('nay-count').innerText = bill.votes_nay + bill.votes_nay_from_delegate
+
+  path
+    .data(force.links())
+    .attr('class', function (d) { return 'link' + (d.source.isDelegated ? ' isDelegated' : '') })
 }
 
 var votes
