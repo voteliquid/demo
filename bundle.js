@@ -272,7 +272,7 @@ module.exports = [
   },
   {
     uid: 'z',
-    full_name: 'Zain Zebra',
+    full_name: 'Zain Zhivago',
     delegate: 'g',
   },
 ]
