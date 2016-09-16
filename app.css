@@ -5,6 +5,20 @@ body {
   font-family: 'Helvetica Neue', sans-serif;
 }
 
+button#simulate {
+  border: 2px solid #5b5b5b;
+  background-color: #efefef;
+  padding: 10px 20px;
+  text-transform: uppercase;
+  color: #262626;
+  cursor: pointer;
+  border-radius: 3px;
+}
+
+button#simulate:hover {
+  background-color: #bcbcbc;
+}
+
 #vote-tally {
   border: 1px solid grey;
   width: 170px;
