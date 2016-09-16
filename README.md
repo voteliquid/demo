@@ -5,6 +5,8 @@ See Github Issues for discussion -> https://github.com/liquidvote/demo/issues
 
 # TODO
 
-- [x] See visual example of liquid democracy as directed graph of nodes
-- [x] Click button to create random collection of votes for one item
-- [x] Click any node to change its vote, and watch graph adjust
+- [ ] Show simulation of one vote coming in at a time
+- [ ] Adjust number of voters
+- [ ] Adjust assumptions about likelihood of voting habits per bill
+- [ ] Click voter to change vote & delegation
+  - [ ] Don't change vote on drag
