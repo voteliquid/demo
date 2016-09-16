@@ -1,6 +1,10 @@
+html {
+  background-color: #f9f9f9;
+}
+
 body {
   width: 900px;
-  margin: 0 auto;
+  margin: 40px auto 0;
   text-align: center;
   font-family: 'Helvetica Neue', sans-serif;
   position: relative;
@@ -85,6 +89,7 @@ button#simulate:hover {
 svg {
   border: 1px solid grey;
   border-radius: 3px;
+  background-color: white;
 }
 
 circle {
