@@ -3,6 +3,7 @@ body {
   margin: 0 auto;
   text-align: center;
   font-family: 'Helvetica Neue', sans-serif;
+  position: relative;
 }
 
 button#simulate {
@@ -14,6 +15,9 @@ button#simulate {
   cursor: pointer;
   border-radius: 3px;
   outline: none;
+  position: absolute;
+  right: 15px;
+  top: 77px;
 }
 
 button#simulate:hover {
@@ -21,14 +25,25 @@ button#simulate:hover {
 }
 
 #vote-tally {
-  width: 240px;
-  margin: 30px auto 0;
-  padding-bottom: 15px;
-  border-radius: 2px;
+  position: absolute;
+  top: 117px;
+  right: 20px;
+  text-align: justify;
 }
 
-h3 {
-  margin-top: 15px;
+h4 {
+  margin: 0;
+}
+
+.yay-label {
+  color: #2ca02c;
+  margin-top: 8px;
+  margin-bottom: 0;
+}
+
+.nay-label {
+  margin-top: 5px;
+  color: #d62728;
 }
 
 .arrow {

@@ -8,9 +8,14 @@
 
   <body>
     <h1>Liquid Democracy Demo</h1>
-    <button id="simulate">Simulate vote</button>
+    <button id="simulate">Simulate votes</button>
     <div id="vote-tally">
-      <span>Vote Tally:&nbsp;&nbsp;&nbsp;<strong><span id="yay-count">0</span></strong> Yays&nbsp;&nbsp;&nbsp;<strong><span id="nay-count">0</span></strong> Nays</span>
+      <p class="yay-label">
+        <strong><span id="yay-count">0</span></strong> Yay
+      </p>
+      <p class="nay-label">
+        <strong><span id="nay-count">0</span></strong> Nay
+      </p>
   </body>
 
   <script src="https://d3js.org/d3.v3.min.js"></script>
