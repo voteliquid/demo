@@ -238,6 +238,9 @@ function clickVoter(voterUid) {
   tallyVotes(votesByVoterUid)
 }
 
+// Start simulated
+document.getElementById('simulate').click()
+
 },{"./example-voters.js":2,"./generate-random-votes.js":3,"lodash":4}],2:[function(require,module,exports){
 module.exports = [
   {

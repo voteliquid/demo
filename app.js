@@ -236,3 +236,6 @@ function clickVoter(voterUid) {
 
   tallyVotes(votesByVoterUid)
 }
+
+// Start simulated
+document.getElementById('simulate').click()
