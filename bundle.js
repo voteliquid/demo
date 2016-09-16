@@ -95,7 +95,6 @@ function tick() {
     return 'M' + d.source.x + ',' + d.source.y + 'A' + dr + ',' + dr + ' 0 0,1 ' + d.target.x + ',' + d.target.y
   })
   circle.attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')' })
-        .attr('class', function (d) { return 'vote ' + d.vote + (d.isDelegated ? ' isDelegated' : '') })
   text.attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')' })
 }
 
@@ -166,12 +165,17 @@ function tallyVotes(votesByVoterUid) {
     nodes[voter.uid].isDelegated = isDelegated
   })
 
+
+  circle
+    .data(force.nodes())
+    .attr('class', function (d) { return 'vote ' + d.vote + (d.isDelegated ? ' isDelegated' : '') })
+
   document.getElementById('yay-count').innerText = bill.votes_yay + bill.votes_yay_from_delegate
   document.getElementById('nay-count').innerText = bill.votes_nay + bill.votes_nay_from_delegate
 }
 
 var votes
-var votesByVoterUid
+var votesByVoterUid = {}
 
 document.getElementById('simulate').onclick = function () {
   // clear existing votes
