@@ -21,7 +21,6 @@ button#simulate:hover {
 }
 
 #vote-tally {
-  border: 1px solid grey;
   width: 170px;
   margin: 30px auto 0;
   padding-bottom: 15px;
@@ -52,6 +51,10 @@ h3 {
 
 .vote.isDelegated {
   opacity: .7;
+}
+
+svg {
+  border: 1px solid grey;
 }
 
 circle {
