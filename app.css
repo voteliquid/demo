@@ -81,12 +81,6 @@ button#simulate:hover {
   fill: #d62728;
 }
 
-.vote.blank {
-  stroke: #ccc;
-  stroke-width: 1px;
-  fill: white;
-}
-
 .vote.isDelegated {
   opacity: .3;
 }
