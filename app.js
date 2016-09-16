@@ -99,22 +99,6 @@ function tick() {
 
 var generateRandomVotes = require('./generate-random-votes.js')
 
-var bill = {
-  uid: 'exampleItem',
-  name: 'Example Item',
-  author: 'e', // voter_uid of 'Eva Ernst'
-  body: '',
-  date_introduced: new Date('Mon Sep 12 2016 04:34:21 GMT-0700 (PDT)'),
-  date_of_vote: new Date('Fri Sep 16 2016 17:00:00 GMT-0700 (PDT)'),
-  votes_yay: 0, // these tally values all default to 0
-  votes_yay_from_delegate: 0,
-  votes_nay: 0,
-  votes_nay_from_delegate: 0,
-  votes_blank: 0,
-  votes_blank_from_delegate: 0,
-  votes_no_vote: 0,
-}
-
 // declare cycleState so resolveIndividualsPosition has access
 var cycleState
 
@@ -145,6 +129,21 @@ document.getElementById('simulate').onclick = function () {
   voters.forEach(function (voter) {
     nodes[voter.uid].vote = undefined
   })
+  var bill = {
+    uid: 'exampleItem',
+    name: 'Example Item',
+    author: 'e', // voter_uid of 'Eva Ernst'
+    body: '',
+    date_introduced: new Date('Mon Sep 12 2016 04:34:21 GMT-0700 (PDT)'),
+    date_of_vote: new Date('Fri Sep 16 2016 17:00:00 GMT-0700 (PDT)'),
+    votes_yay: 0, // these tally values all default to 0
+    votes_yay_from_delegate: 0,
+    votes_nay: 0,
+    votes_nay_from_delegate: 0,
+    votes_blank: 0,
+    votes_blank_from_delegate: 0,
+    votes_no_vote: 0,
+  }
 
   var votes = generateRandomVotes(voters)
 
@@ -172,4 +171,8 @@ document.getElementById('simulate').onclick = function () {
     nodes[voter.uid].vote = position
     nodes[voter.uid].isDelegated = isDelegated
   })
+
+  document.getElementById('vote-tally').style.visibility = 'visible'
+  document.getElementById('yay-count').innerText = bill.votes_yay + bill.votes_yay_from_delegate
+  document.getElementById('nay-count').innerText = bill.votes_nay + bill.votes_nay_from_delegate
 }

@@ -2,6 +2,18 @@ body {
   width: 700px;
   margin: 0 auto;
   text-align: center;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+#vote-tally {
+  border: 1px solid grey;
+  width: 170px;
+  margin: 30px auto 0;
+  padding-bottom: 15px;
+}
+
+h3 {
+  margin-top: 15px;
 }
 
 .link {
