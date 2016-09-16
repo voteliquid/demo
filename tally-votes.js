@@ -54,11 +54,14 @@ function resolveIndividualsPosition(voter, votesByVoterUid) {
   }
 
   // Protect against endless cycle of no-show votes
-  cycleState.hare = votersByUid[votersByUid[cycleState.hare.delegate].delegate]
+  cycleState.hare = votersByUid[cycleState.hare.delegate]
   if (!votesByVoterUid.hasOwnProperty(cycleState.hare.uid)) {
-    cycleState.tortoise = votersByUid[cycleState.tortoise.delegate]
-    if (cycleState.hare === cycleState.tortoise) {
-      return 'no_vote'
+    cycleState.hare = votersByUid[cycleState.hare.delegate]
+    if (!votesByVoterUid.hasOwnProperty(cycleState.hare.uid)) {
+      cycleState.tortoise = votersByUid[cycleState.tortoise.delegate]
+      if (cycleState.hare === cycleState.tortoise) {
+        return 'no_vote'
+      }
     }
   }
 
