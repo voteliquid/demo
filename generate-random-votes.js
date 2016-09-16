@@ -14,7 +14,7 @@ module.exports = function generateRandomVotes(voters) {
       })
     }
   }
-  console.log('votes:\n', votes, '\n')
+  // console.log('votes:\n', votes, '\n')
 
   return votes
 }

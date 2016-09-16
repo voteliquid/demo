@@ -61,6 +61,7 @@ svg.append('defs').selectAll('marker')
     .attr('orient', 'auto')
   .append('path')
     .attr('d', 'M0,-5L10,0L0,5')
+    .attr('class', function () { return 'arrow' })
 
 var path = svg.append('g').selectAll('path')
     .data(force.links())
@@ -168,6 +169,7 @@ function tallyVotes(votesByVoterUid) {
   circle
     .data(force.nodes())
     .attr('class', function (d) { return 'vote ' + d.vote + (d.isDelegated ? ' isDelegated' : '') })
+    .attr('r', function (d) { return d.vote === 'blank' ? 8 : 10 })
 
   document.getElementById('yay-count').innerText = bill.votes_yay + bill.votes_yay_from_delegate
   document.getElementById('nay-count').innerText = bill.votes_nay + bill.votes_nay_from_delegate

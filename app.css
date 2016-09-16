@@ -31,9 +31,13 @@ h3 {
   margin-top: 15px;
 }
 
+.arrow {
+  fill: #999;
+}
+
 .link {
   fill: none;
-  stroke: #666;
+  stroke: #999;
   stroke-width: 1.5px;
 }
 
@@ -47,6 +51,7 @@ h3 {
 
 .vote.blank {
   stroke: #ccc;
+  stroke-width: 1px;
   fill: white;
 }
 
@@ -68,5 +73,9 @@ circle {
 text {
   font: 10px sans-serif;
   pointer-events: none;
-  text-shadow: 0 3px 0 #fff, 3px 0 0 #fff, 0 -3px 0 #fff, -3px 0 0 #fff;
+}
+
+text-bg {
+  background-color: white;
+  opacity: .1;
 }
