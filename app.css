@@ -21,7 +21,7 @@ button#simulate:hover {
 }
 
 #vote-tally {
-  width: 170px;
+  width: 240px;
   margin: 30px auto 0;
   padding-bottom: 15px;
   border-radius: 2px;
@@ -38,14 +38,15 @@ h3 {
 }
 
 .vote.yay {
-  fill: green;
+  fill: #2ca02c;
 }
 
 .vote.nay {
-  fill: red;
+  fill: #d62728;
 }
 
 .vote.blank {
+  stroke: #ccc;
   fill: white;
 }
 
@@ -55,11 +56,12 @@ h3 {
 
 svg {
   border: 1px solid grey;
+  border-radius: 3px;
 }
 
 circle {
   fill: #ccc;
-  stroke: #333;
+  stroke: #fff;
   stroke-width: 1.5px;
 }
 
