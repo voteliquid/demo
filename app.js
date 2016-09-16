@@ -154,8 +154,6 @@ function tallyVotes(votesByVoterUid) {
     votes_yay_from_delegate: 0,
     votes_nay: 0,
     votes_nay_from_delegate: 0,
-    votes_blank: 0,
-    votes_blank_from_delegate: 0,
     votes_no_vote: 0,
   }
 
@@ -187,7 +185,6 @@ function tallyVotes(votesByVoterUid) {
   circle
     .data(force.nodes())
     .attr('class', function (d) { return 'vote ' + d.vote + (d.isDelegated ? ' isDelegated' : '') })
-    .attr('r', function (d) { return d.vote === 'blank' ? 8 : 10 })
 
   document.getElementById('yay-count').innerText = bill.votes_yay + bill.votes_yay_from_delegate
   document.getElementById('nay-count').innerText = bill.votes_nay + bill.votes_nay_from_delegate
@@ -209,7 +206,7 @@ document.getElementById('simulate').onclick = function () {
 }
 
 function clickVoter(voterUid) {
-  var positions = ['yay', 'nay', 'blank', 'no_vote']
+  var positions = ['yay', 'nay', 'no_vote']
 
   var newPosition
 

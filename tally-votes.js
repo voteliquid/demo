@@ -28,8 +28,6 @@ var bill = {
   votes_yay_from_delegate: 0,
   votes_nay: 0,
   votes_nay_from_delegate: 0,
-  votes_blank: 0,
-  votes_blank_from_delegate: 0,
   votes_no_vote: 0,
 }
 
@@ -99,7 +97,6 @@ var finalTally = {
   voted: voters.length - bill.votes_no_vote, // is there a quorum?
   potential_voters: voters.length,
   delegated: bill.votes_yay_from_delegate
-    + bill.votes_nay_from_delegate
-    + bill.votes_blank_from_delegate,
+    + bill.votes_nay_from_delegate,
 }
 console.log('\nfinalTally:', finalTally)
