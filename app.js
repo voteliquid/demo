@@ -11,7 +11,7 @@ var voters = require('./example-voters.js').map(function (voter) {
 var votersByUid = _.keyBy(voters, 'uid')
 
 var links = voters.map(function (voter) {
-  return { source: voter.name, target: voter.delegate, type: 'delegation' } // can add other edge types
+  return { source: voter.name, target: voter.delegate, type: 'delegation' }
 })
 
 var nodes = {}
@@ -76,8 +76,20 @@ var circle = svg.append('g').selectAll('circle')
     .append('circle')
     .attr('r', 10)
     .attr('class', function (d) { return 'vote ' + d.vote })
-    .on('click', function (d) { clickVoter(d.name) })
+    .on('click', function (d) { clickVoter(d.name) }) // eslint-disable-line no-use-before-define
     .call(force.drag)
+
+// background rectangle for names
+var rect = svg.append('g').selectAll('rect')
+  .data(force.nodes())
+  .enter()
+  .append('rect')
+  .attr('x', 13)
+  .attr('y', '-0.4em')
+  .attr('width', function (d) { return d.full_name.length * 5 })
+  .attr('height', 11)
+  .style('fill', '#fff')
+  .style('fill-opacity', '.6')
 
 var text = svg.append('g').selectAll('text')
     .data(force.nodes())
@@ -96,6 +108,7 @@ function tick() {
   })
   circle.attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')' })
   text.attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')' })
+  rect.attr('transform', function (d) { return 'translate(' + d.x + ',' + d.y + ')' })
 }
 
 var generateRandomVotes = require('./generate-random-votes.js')
