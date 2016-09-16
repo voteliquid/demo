@@ -1,7 +1,7 @@
 module.exports = [
   {
     uid: 'a',
-    full_name: 'Angela Augustine',
+    full_name: 'Anna Augustine',
     delegate: 'c',
   },
   {

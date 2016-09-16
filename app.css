@@ -37,7 +37,7 @@ button#simulate:hover {
 
 #instructions {
   position: absolute;
-  top: 385px;
+  top: 357px;
   left: 8px;
   font-size: 0.75em;
   text-align: left;
@@ -96,6 +96,7 @@ circle {
   fill: #ccc;
   stroke: #fff;
   stroke-width: 1.5px;
+  cursor: pointer;
 }
 
 text {

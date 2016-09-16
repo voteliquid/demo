@@ -48,7 +48,7 @@ var svg = d3.select('body').append('svg')
     .attr('width', width)
     .attr('height', height)
 
-// Per-type markers, as they don't inherit styles.
+// Delegation arrows
 svg.append('defs').selectAll('marker')
     .data(['delegation'])
   .enter()
@@ -64,6 +64,7 @@ svg.append('defs').selectAll('marker')
     .attr('d', 'M0,-5L10,0L0,5')
     .attr('class', function () { return 'arrow' })
 
+// Delegation lines
 var path = svg.append('g').selectAll('path')
     .data(force.links())
   .enter()
@@ -71,6 +72,7 @@ var path = svg.append('g').selectAll('path')
     .attr('class', function (d) { return 'link ' + d.type })
     .attr('marker-end', function (d) { return 'url(#' + d.type + ')' })
 
+// Vote nodes
 var circle = svg.append('g').selectAll('circle')
     .data(force.nodes())
   .enter()
@@ -80,7 +82,7 @@ var circle = svg.append('g').selectAll('circle')
     .on('click', function (d) { clickVoter(d.name) }) // eslint-disable-line no-use-before-define
     .call(force.drag)
 
-// background rectangle for names
+// Background rectangle for names
 var rect = svg.append('g').selectAll('rect')
   .data(force.nodes())
   .enter()
@@ -92,6 +94,7 @@ var rect = svg.append('g').selectAll('rect')
   .style('fill', '#fff')
   .style('fill-opacity', '.6')
 
+// Name labels
 var text = svg.append('g').selectAll('text')
     .data(force.nodes())
   .enter()
@@ -165,16 +168,18 @@ function tallyVotes(votesByVoterUid) {
       hare: voter,
     }
 
-    var position = resolveIndividualsPosition(voter, votesByVoterUid, cycleState)
+    var position = resolveIndividualsPosition(voter, votesByVoterUid)
     var isDelegated = !votesByVoterUid.hasOwnProperty(voter.uid)
 
-    // increment tally counter for the appropriate key
+    // Increment tally counter for the appropriate key
     var tallyKey = 'votes_' + position
     if (position !== 'no_vote' && isDelegated) {
       tallyKey += '_from_delegate'
     }
     bill[tallyKey]++
     // console.log(voter.full_name, tallyKey)
+
+    // Update the node
     nodes[voter.uid].vote = position
     nodes[voter.uid].isDelegated = isDelegated
   })
@@ -232,7 +237,7 @@ function clickVoter(voterUid) {
 module.exports = [
   {
     uid: 'a',
-    full_name: 'Angela Augustine',
+    full_name: 'Anna Augustine',
     delegate: 'c',
   },
   {
