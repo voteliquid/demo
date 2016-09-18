@@ -81,8 +81,12 @@ button#simulate:hover {
   fill: #d62728;
 }
 
-.vote.isDelegated {
-  opacity: .3;
+.vote.yay.isDelegated {
+  fill: #c0e3c0;
+}
+
+.vote.nay.isDelegated {
+  fill: #f3bebf;
 }
 
 svg {
