@@ -3,10 +3,9 @@ Interactive demo to visualize Liquid Democracy in action
 
 See Github Issues for discussion -> https://github.com/liquidvote/demo/issues
 
-# TODO
+## Local development
 
-- [ ] Show simulation of one vote coming in at a time
-- [ ] Adjust number of voters
-- [ ] Adjust assumptions about likelihood of voting habits per bill
-- [ ] Click voter to change vote & delegation
-  - [ ] Don't change vote on drag
+Development requires 2 shells running in the background:
+
+- One shell should run `npm start`. This will enable `watchify` for `require()` statements in the browser.
+- Another shell should run `python -m SimpleHTTPServer`. This will serve the demo at localhost:8000.
