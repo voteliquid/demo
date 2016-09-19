@@ -193,8 +193,21 @@ function tallyVotes(votesByVoterUid) {
     .data(force.nodes())
     .attr('class', function (d) { return 'vote ' + d.vote + (d.isDelegated ? ' isDelegated' : '') })
 
-  document.getElementById('yay-count').innerText = bill.votes_yay + bill.votes_yay_from_delegate
-  document.getElementById('nay-count').innerText = bill.votes_nay + bill.votes_nay_from_delegate
+  var totalYay = bill.votes_yay + bill.votes_yay_from_delegate
+  var totalNay = bill.votes_nay + bill.votes_nay_from_delegate
+
+  var outcome = 'ties'
+  if (totalYay > totalNay) {
+    outcome = 'passes'
+  }
+  if (totalYay < totalNay) {
+    outcome = 'fails'
+  }
+
+  document.getElementById('yay-count').innerText = totalYay
+  document.getElementById('nay-count').innerText = totalNay
+  document.getElementById('outcome').innerText = outcome
+  document.getElementById('outcome').className = outcome
 
   path
     .data(force.links())

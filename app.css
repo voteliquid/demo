@@ -32,7 +32,7 @@ button#simulate:hover {
   position: absolute;
   top: 117px;
   right: 20px;
-  text-align: justify;
+  text-align: right;
 }
 
 #instructions {
@@ -55,6 +55,18 @@ button#simulate:hover {
 
 .nay-label {
   margin-top: 5px;
+  color: #d62728;
+}
+
+#outcome {
+  font-weight: bold;
+}
+
+#outcome.passes {
+  color: #2ca02c;
+}
+
+#outcome.fails {
   color: #d62728;
 }
 
