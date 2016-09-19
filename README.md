@@ -3,6 +3,8 @@ Interactive demo to visualize Liquid Democracy in action
 
 See Github Issues for discussion -> https://github.com/liquidvote/demo/issues
 
+![screenshot](/screenshot3.png)
+
 ## Local development
 
 Development requires 2 shells running in the background:
