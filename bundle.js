@@ -860,6 +860,11 @@ module.exports={
 },{}],4:[function(require,module,exports){
 var firstNames = require('./corpora/firstNames.json').firstNames
 var lastNames = require('./corpora/lastNames.json').lastNames
+var _ = require('lodash')
+
+// Don't use any of these as UIDs:
+  // missing firstName starting letters: q, u, y
+  // missing lastName starting letters: i, q, u, x, z
 
 var uidToDelegate = {
   a: 'c',
@@ -870,12 +875,23 @@ var uidToDelegate = {
   f: 'a',
   g: 'a',
   h: 'a',
-  z: 'g',
+  j: 'c',
+  k: 'j',
+  l: 'b',
+  m: 'j',
+  n: 'g',
+  o: 'g',
+  p: 'k',
+}
+
+function startsWith(letter, item) {
+  return item[0].toLowerCase() === letter.toLowerCase()
 }
 
 module.exports = Object.keys(uidToDelegate).map(function (uid) {
-  var randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)]
-  var randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)]
+  var sameFirstLetter = _.curry(startsWith, 2)(uid)
+  var randomFirstName = _.sample(firstNames.filter(sameFirstLetter))
+  var randomLastName = _.sample(lastNames.filter(sameFirstLetter))
 
   return {
     uid: uid,
@@ -884,7 +900,7 @@ module.exports = Object.keys(uidToDelegate).map(function (uid) {
   }
 })
 
-},{"./corpora/firstNames.json":2,"./corpora/lastNames.json":3}],5:[function(require,module,exports){
+},{"./corpora/firstNames.json":2,"./corpora/lastNames.json":3,"lodash":6}],5:[function(require,module,exports){
 module.exports = function generateRandomVotes(voters) {
   var votes = []
   for (var i = 0; i < voters.length; i++) {
