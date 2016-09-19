@@ -1,47 +1,25 @@
-module.exports = [
-  {
-    uid: 'a',
-    full_name: 'Anna Augustine',
-    delegate: 'c',
-  },
-  {
-    uid: 'b',
-    full_name: 'Ben Botticelli',
-    delegate: 'd',
-  },
-  {
-    uid: 'c',
-    full_name: 'Carl Campbell',
-    delegate: 'a',
-  },
-  {
-    uid: 'd',
-    full_name: 'Dalia Douglass',
-    delegate: 'b',
-  },
-  {
-    uid: 'e',
-    full_name: 'Eva Ernst',
-    delegate: 'a',
-  },
-  {
-    uid: 'f',
-    full_name: 'Franklin Fishburne',
-    delegate: 'a',
-  },
-  {
-    uid: 'g',
-    full_name: 'Grant Gordon',
-    delegate: 'a',
-  },
-  {
-    uid: 'h',
-    full_name: 'Heather Highgarden',
-    delegate: 'a',
-  },
-  {
-    uid: 'z',
-    full_name: 'Zain Zhivago',
-    delegate: 'g',
-  },
-]
+var firstNames = require('./corpora/firstNames.json').firstNames
+var lastNames = require('./corpora/lastNames.json').lastNames
+
+var uidToDelegate = {
+  a: 'c',
+  b: 'd',
+  c: 'a',
+  d: 'b',
+  e: 'a',
+  f: 'a',
+  g: 'a',
+  h: 'a',
+  z: 'g',
+}
+
+module.exports = Object.keys(uidToDelegate).map(function (uid) {
+  var randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)]
+  var randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)]
+
+  return {
+    uid: uid,
+    full_name: randomFirstName + ' ' + randomLastName,
+    delegate: uidToDelegate[uid],
+  }
+})
