@@ -47,7 +47,7 @@ button#simulate:hover {
   font-size: 11px;
 }
 
-.yay-label {
+.yea-label {
   color: #2ca02c;
   margin-top: 8px;
   margin-bottom: 0;
@@ -85,7 +85,7 @@ button#simulate:hover {
   opacity: 1;
 }
 
-.vote.yay {
+.vote.yea {
   fill: #2ca02c;
 }
 
@@ -93,7 +93,7 @@ button#simulate:hover {
   fill: #d62728;
 }
 
-.vote.yay.isDelegated {
+.vote.yea.isDelegated {
   fill: #c0e3c0;
 }
 

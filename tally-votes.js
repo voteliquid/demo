@@ -24,8 +24,8 @@ var bill = {
   body: '',
   date_introduced: new Date('Mon Sep 12 2016 04:34:21 GMT-0700 (PDT)'),
   date_of_vote: new Date('Fri Sep 16 2016 17:00:00 GMT-0700 (PDT)'),
-  votes_yay: 0, // these tally values all default to 0
-  votes_yay_from_delegate: 0,
+  votes_yea: 0, // these tally values all default to 0
+  votes_yea_from_delegate: 0,
   votes_nay: 0,
   votes_nay_from_delegate: 0,
   votes_no_vote: 0,
@@ -95,11 +95,11 @@ console.log('\nbill:', bill)
 
 // Calculate and print the effective final tallies
 var finalTally = {
-  yay: bill.votes_yay + bill.votes_yay_from_delegate,
+  yea: bill.votes_yea + bill.votes_yea_from_delegate,
   nay: bill.votes_nay + bill.votes_nay_from_delegate,
   voted: voters.length - bill.votes_no_vote, // is there a quorum?
   potential_voters: voters.length,
-  delegated: bill.votes_yay_from_delegate
+  delegated: bill.votes_yea_from_delegate
     + bill.votes_nay_from_delegate,
 }
 console.log('\nfinalTally:', finalTally)
