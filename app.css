@@ -1,5 +1,5 @@
 html {
-  background-color: #f9f9f9;
+  background-color: #0a0a0a;
 }
 
 body {
@@ -8,6 +8,10 @@ body {
   text-align: center;
   font-family: 'Helvetica Neue', sans-serif;
   position: relative;
+}
+
+h1 {
+  color: white;
 }
 
 button#simulate {
@@ -130,6 +134,7 @@ footer {
 
 footer a {
   opacity: .5;
+  color: aqua;
 }
 
 footer a:hover {
