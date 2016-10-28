@@ -8,6 +8,7 @@ body {
   text-align: center;
   font-family: 'Helvetica Neue', sans-serif;
   position: relative;
+  color: #dcdcdc;
 }
 
 h1 {
@@ -52,7 +53,7 @@ button#simulate:hover {
 }
 
 .yea-label {
-  color: #2ca02c;
+  color: #04a904;
   margin-top: 8px;
   margin-bottom: 0;
 }
@@ -67,7 +68,7 @@ button#simulate:hover {
 }
 
 #outcome.passes {
-  color: #2ca02c;
+  color: #04a904;
 }
 
 #outcome.fails {
@@ -90,7 +91,7 @@ button#simulate:hover {
 }
 
 .vote.yea {
-  fill: #2ca02c;
+  fill: #04a904;
 }
 
 .vote.nay {
@@ -98,22 +99,22 @@ button#simulate:hover {
 }
 
 .vote.yea.isDelegated {
-  fill: #c0e3c0;
+  fill: #325632;
 }
 
 .vote.nay.isDelegated {
-  fill: #f3bebf;
+  fill: #a26769;
 }
 
 svg {
   border: 1px solid grey;
   border-radius: 3px;
-  background-color: white;
+  background-color: #232323;
 }
 
 circle {
-  fill: #ccc;
-  stroke: #fff;
+  fill: #757575;
+  stroke: #232323;
   stroke-width: 1.5px;
   cursor: pointer;
 }

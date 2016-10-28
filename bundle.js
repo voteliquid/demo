@@ -95,7 +95,7 @@ var rect = svg.append('g').selectAll('rect')
   .attr('y', '-0.4em')
   .attr('width', function (d) { return d.full_name.length * 5 })
   .attr('height', 11)
-  .style('fill', '#fff')
+  .style('fill', '#232323')
   .style('fill-opacity', '.6')
 
 // Name labels
@@ -106,6 +106,7 @@ var text = svg.append('g').selectAll('text')
     .attr('x', 13)
     .attr('y', '.31em')
     .text(function (d) { return d.full_name })
+    .style('fill', '#dcdcdc')
 
 function tick() {
   path.attr('d', function linkArc(d) {
