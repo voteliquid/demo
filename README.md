@@ -3,7 +3,7 @@ Interactive demo to visualize Liquid Democracy in action
 
 See Github Issues for discussion -> https://github.com/liquidvote/demo/issues
 
-![screenshot](/screenshot3.png)
+![screenshot](/screenshot4.png)
 
 ## Local development
 
