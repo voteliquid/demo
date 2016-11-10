@@ -95,7 +95,7 @@ var rect = svg.append('g').selectAll('rect')
   .attr('y', '-0.4em')
   .attr('width', function (d) { return d.full_name.length * 5 })
   .attr('height', 11)
-  .style('fill', '#fff')
+  .style('fill', '#232323')
   .style('fill-opacity', '.6')
 
 // Name labels
@@ -106,6 +106,7 @@ var text = svg.append('g').selectAll('text')
     .attr('x', 13)
     .attr('y', '.31em')
     .text(function (d) { return d.full_name })
+    .style('fill', '#dcdcdc')
 
 function tick() {
   path.attr('d', function linkArc(d) {
@@ -918,7 +919,7 @@ module.exports = function generateRandomVotes(voters) {
   var votes = []
   for (var i = 0; i < voters.length; i++) {
     // Pick a random position: 'yea', 'nay', 'no_vote' (inherits)
-    var position = ['yea', 'nay', 'no_vote'][Math.floor(Math.random() * 3)]
+    var position = ['yea', 'nay', 'no_vote', 'no_vote'][Math.floor(Math.random() * 4)]
 
     if (position !== 'no_vote') {
       votes.push({
