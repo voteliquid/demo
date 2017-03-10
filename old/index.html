@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Electoral Politics Comparison</title>
+    <link rel="stylesheet" href="app.css">
+    <link rel="shortcut icon" href="https://demo.liquid.vote/favicon.png">
+    <meta property="og:title" content="Electoral Poltics Comparison" />
+    <meta property="og:url" content="https://demo.liquid.vote" />
+    <meta property="og:image" content="https://demo.liquid.vote/screenshot4.png"/>
+    <meta property="og:description" content="This graph shows how participants vote on a proposal. Each voter's arrow points to their delegate. Click a voter's circle to adjust their vote. Voters with translucent circles have inherited their delegate's vote." />
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@liquid_vote">
+    <meta name="twitter:title" content="Electoral Poltics Comparison">
+    <meta name="twitter:description" content="This graph shows how participants vote on a proposal. Each voter's arrow points to their delegate. Click a voter's circle to adjust their vote. Voters with translucent circles have inherited their delegate's vote.">
+    <meta name="twitter:image" content="https://demo.liquid.vote/screenshot4.png">
+  </head>
+
+  <body>
+    <h1>Electoral Politics Comparison</h1>
+    <button id="simulate">Simulate new vote</button>
+    <div id="vote-tally">
+      <p class="yea-label">
+        <strong><span id="yea-count">0</span></strong> Yea
+      </p>
+      <p class="nay-label">
+        <strong><span id="nay-count">0</span></strong> Nay
+      </p>
+      <p>
+        Elected rep votes <span id="outcome">abstain</span>
+      </p>
+    </div>
+    <p id="instructions">
+      <strong>INSTRUCTIONS</strong><br>
+      This graph shows traditional electoral democracy.<br>
+      No matter how constituents feel, one person holds all voting power in their jurisdiction.<br>
+    </p>
+    <footer>
+      <p><a href="https://join.liquid.vote">Join us</a></p>
+      <a href="https://liquid.vote">Learn more</a> |
+      <a href="https://github.com/liquidvote/demo/issues">Give feedback</a>
+    </footer>
+  </body>
+
+  <script src="https://d3js.org/d3.v3.min.js"></script>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-84279342-1', 'auto');
+    ga('send', 'pageview');
+
+  </script>
+  <script src="bundle.js"></script>
+</html>

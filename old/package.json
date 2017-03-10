@@ -1,0 +1,31 @@
+{
+  "name": "liquid-api",
+  "version": "0.0.1",
+  "description": "Backend API to manage a liquid democracy",
+  "main": "index.js",
+  "dependencies": {
+    "lodash": "^4.15.0"
+  },
+  "devDependencies": {
+    "browserify": "^13.1.0",
+    "eslint": "^3.5.0",
+    "eslint-config-airbnb-base": "^7.1.0",
+    "eslint-plugin-import": "^1.15.0",
+    "watchify": "^3.7.0"
+  },
+  "scripts": {
+    "build": "browserify -e app.js -o bundle.js",
+    "start": "watchify -e app.js -o bundle.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/crowdocracy/liquid-api.git"
+  },
+  "author": "David Ernst <npm@dsernst.com> (http://dsernst.com)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/crowdocracy/liquid-api/issues"
+  },
+  "homepage": "https://github.com/crowdocracy/liquid-api#readme"
+}
