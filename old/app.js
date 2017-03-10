@@ -78,7 +78,7 @@ var circle = svg.append('g').selectAll('circle')
     .data(force.nodes())
   .enter()
     .append('circle')
-    .attr('r', (node) => { return node.name === 'a' ? 20 : 10 })
+    .attr('r', (node) => { return node.name === 'a' ? 30 : 6 })
     .attr('class', function (d) { return 'vote ' + d.vote })
     .on('click', function (d) { clickVoter(d.name) }) // eslint-disable-line no-use-before-define
     .call(force.drag)
