@@ -598,6 +598,7 @@ module.exports={
     "Peter",
     "Peyton",
     "Preston",
+    "Quinn",
     "Rachel",
     "Raymond",
     "Reagan",
@@ -646,6 +647,7 @@ module.exports={
     "Trinity",
     "Tristan",
     "Tyler",
+    "Uma",
     "Valeria",
     "Valerie",
     "Vanessa",
@@ -657,6 +659,7 @@ module.exports={
     "William",
     "Wyatt",
     "Xavier",
+    "Yancy",
     "Zachary",
     "Zoe",
     "Zoey"
@@ -867,7 +870,12 @@ module.exports={
     "Elliott",
     "Cunningham",
     "Knight",
-    "Bradley"
+    "Bradley",
+    "Xiong",
+    "Quinones",
+    "Zucca",
+    "Upton",
+    "Isaacs"
   ]
 }
 
@@ -886,9 +894,10 @@ var uidToDelegate = {
   c: 'a',
   d: 'b',
   e: 'a',
-  f: 'a',
+  f: 'v',
   g: 'a',
   h: 'a',
+  i: 'g',
   j: 'c',
   k: 'j',
   l: 'b',
@@ -896,6 +905,16 @@ var uidToDelegate = {
   n: 'g',
   o: 'g',
   p: 'k',
+  q: 'a',
+  r: 'b',
+  s: 'c',
+  t: 'd',
+  u: 'e',
+  v: 'f',
+  w: 'g',
+  x: 'h',
+  y: 'j',
+  z: 'k',
 }
 
 function startsWith(letter, item) {

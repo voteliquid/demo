@@ -2,19 +2,16 @@ var firstNames = require('./corpora/firstNames.json').firstNames
 var lastNames = require('./corpora/lastNames.json').lastNames
 var _ = require('lodash')
 
-// Don't use any of these as UIDs:
-  // missing firstName starting letters: q, u, y
-  // missing lastName starting letters: i, q, u, x, z
-
 var uidToDelegate = {
   a: 'c',
   b: 'd',
   c: 'a',
   d: 'b',
   e: 'a',
-  f: 'a',
+  f: 'v',
   g: 'a',
   h: 'a',
+  i: 'g',
   j: 'c',
   k: 'j',
   l: 'b',
@@ -22,6 +19,16 @@ var uidToDelegate = {
   n: 'g',
   o: 'g',
   p: 'k',
+  q: 'a',
+  r: 'b',
+  s: 'c',
+  t: 'd',
+  u: 'e',
+  v: 'f',
+  w: 'g',
+  x: 'h',
+  y: 'j',
+  z: 'k',
 }
 
 function startsWith(letter, item) {
