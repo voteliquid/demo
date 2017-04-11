@@ -42,7 +42,7 @@ button#simulate:hover {
 
 #instructions {
   position: absolute;
-  top: 401px;
+  top: 601px;
   left: 8px;
   font-size: 0.75em;
   text-align: left;
@@ -121,7 +121,7 @@ footer {
   font-size: 12px;
   left: 332px;
   position: absolute;
-  top: 498px;
+  top: 698px;
   text-align: center;
   width: 200px;
 }

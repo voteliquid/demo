@@ -21,7 +21,7 @@ var links = voters.slice(1).map(function (voter) {
 
 var nodes = {}
 var width = 900
-var height = 400
+var height = 600
 
 // Convert links to weird d3 nodes object
 links.forEach(function (link) {
