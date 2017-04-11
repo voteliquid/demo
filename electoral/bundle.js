@@ -153,15 +153,25 @@ function tallyVotes(indexedVotes) {
   var totalYea = bill.votes_yea
   var totalNay = bill.votes_nay
 
-  var outcome = 'abstain'
-  if (indexedVotes.hasOwnProperty('a')) {
-    outcome = indexedVotes.a.position
-  }
-
   document.getElementById('yea-count').innerText = totalYea
   document.getElementById('nay-count').innerText = totalNay
-  document.getElementById('outcome').innerText = outcome
-  document.getElementById('outcome').className = outcome
+
+  document.getElementById('but').style.opacity = 0
+  document.getElementById('elected-rep-abstains').style.display = 'block'
+  document.getElementById('elected-rep-votes').style.display = 'none'
+
+  if (indexedVotes.hasOwnProperty('a')) {
+    if (bill.votes_yea > bill.votes_nay && indexedVotes.a.position === 'nay' // eslint-disable-line no-mixed-operators
+    || bill.votes_yea < bill.votes_nay && indexedVotes.a.position === 'yea' // eslint-disable-line no-mixed-operators
+    ) {
+      document.getElementById('but').style.opacity = 1
+    }
+
+    document.getElementById('elected-rep-abstains').style.display = 'none'
+    document.getElementById('elected-rep-votes').style.display = 'block'
+    document.getElementById('outcome').innerText = indexedVotes.a.position
+    document.getElementById('outcome').className = indexedVotes.a.position
+  }
 
   path
     .data(force.links())
