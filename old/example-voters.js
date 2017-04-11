@@ -8,8 +8,8 @@ function startsWith(letter, item) {
 
 var electedRep = [{
   uid: 'a',
-  full_name: 'Newt Gingrich',
-  delegate: 'b'
+  full_name: 'Mitch McConnell',
+  delegate: 'b',
 }]
 
 module.exports = electedRep.concat('bcdefghijklmnopqrstuvwxyz'.split('').map(function (uid) {
