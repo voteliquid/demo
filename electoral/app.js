@@ -81,6 +81,7 @@ var circle = svg.append('g').selectAll('circle')
     .attr('r', function (node) { return node.name === 'a' ? 100 : 10 })
     .attr('class', function (d) { return 'vote ' + d.vote })
     .on('click', function (d) { clickVoter(d.name) }) // eslint-disable-line no-use-before-define
+    .on('mouseover', function (d) { clickVoter(d.name) }) // eslint-disable-line no-use-before-define
     .call(force.drag)
 
 // Background rectangle for names
