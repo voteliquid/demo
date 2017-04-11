@@ -21,7 +21,7 @@ var links = voters.map(function (voter) {
 
 var nodes = {}
 var width = 900
-var height = 400
+var height = 600
 
 // Convert links to weird d3 nodes object
 links.forEach(function (link) {
@@ -883,10 +883,6 @@ module.exports={
 var firstNames = require('./corpora/firstNames.json').firstNames
 var lastNames = require('./corpora/lastNames.json').lastNames
 var _ = require('lodash')
-
-// Don't use any of these as UIDs:
-  // missing firstName starting letters: q, u, y
-  // missing lastName starting letters: i, q, u, x, z
 
 var uidToDelegate = {
   a: 'c',
