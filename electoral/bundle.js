@@ -41,7 +41,7 @@ var force = d3.layout.force()
     .nodes(d3.values(nodes))
     .links(links)
     .size([width, height])
-    .linkDistance(160)
+    .linkDistance(200)
     .charge(-300)
     .on('tick', tick) // eslint-disable-line no-use-before-define
     .start()
@@ -79,7 +79,7 @@ var circle = svg.append('g').selectAll('circle')
     .data(force.nodes())
   .enter()
     .append('circle')
-    .attr('r', (node) => { return node.name === 'a' ? 30 : 6 })
+    .attr('r', function (node) { return node.name === 'a' ? 100 : 10 })
     .attr('class', function (d) { return 'vote ' + d.vote })
     .on('click', function (d) { clickVoter(d.name) }) // eslint-disable-line no-use-before-define
     .call(force.drag)
@@ -165,7 +165,7 @@ function tallyVotes(indexedVotes) {
 
   path
     .data(force.links())
-    .attr('class', function (d) { return 'link' })
+    .attr('class', 'link')
 }
 
 var votes
