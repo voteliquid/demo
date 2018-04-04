@@ -1,9 +1,9 @@
 # demo
 Interactive demo to visualize Liquid Democracy in action
 
-See Github Issues for discussion -> https://github.com/liquidvote/demo/issues
+See Github Issues for discussion -> https://github.com/unitedvote/demo/issues
 
-![screenshot](/screenshot4.png)
+![screenshot](/screenshot5.png)
 
 ## Local development
 
