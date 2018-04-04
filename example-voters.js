@@ -1,5 +1,5 @@
 var firstNames = require('./corpora/firstNames.json').firstNames
-var lastNames = require('./corpora/lastNames.json').lastNames
+// var lastNames = require('./corpora/lastNames.json').lastNames
 var _ = require('lodash')
 
 var uidToDelegate = {
@@ -38,11 +38,11 @@ function startsWith(letter, item) {
 module.exports = Object.keys(uidToDelegate).map(function (uid) {
   var sameFirstLetter = _.curry(startsWith, 2)(uid)
   var randomFirstName = _.sample(firstNames.filter(sameFirstLetter))
-  var randomLastName = _.sample(lastNames.filter(sameFirstLetter))
+  // var randomLastName = _.sample(lastNames.filter(sameFirstLetter))
 
   return {
     uid: uid,
-    full_name: randomFirstName + ' ' + randomLastName,
+    full_name: randomFirstName,
     delegate: uidToDelegate[uid],
   }
 })

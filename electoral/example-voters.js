@@ -15,11 +15,11 @@ var electedRep = [{
 module.exports = electedRep.concat('bcdefghijklmnopqrstuvwxyz'.split('').map(function (uid) {
   var sameFirstLetter = _.curry(startsWith, 2)(uid)
   var randomFirstName = _.sample(firstNames.filter(sameFirstLetter))
-  var randomLastName = _.sample(lastNames.filter(sameFirstLetter))
+  // var randomLastName = _.sample(lastNames.filter(sameFirstLetter))
 
   return {
     uid: uid,
-    full_name: randomFirstName + ' ' + randomLastName,
+    full_name: randomFirstName,
     delegate: 'a',
   }
 }))
