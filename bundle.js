@@ -256,7 +256,7 @@ function clickVoter(voterUid) {
 }
 
 // Start simulated
-document.getElementById('simulate').click()
+// document.getElementById('simulate').click()
 
 },{"./example-voters.js":3,"./generate-random-votes.js":4,"lodash":5}],2:[function(require,module,exports){
 module.exports={

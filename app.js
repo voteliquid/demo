@@ -255,4 +255,4 @@ function clickVoter(voterUid) {
 }
 
 // Start simulated
-document.getElementById('simulate').click()
+// document.getElementById('simulate').click()
